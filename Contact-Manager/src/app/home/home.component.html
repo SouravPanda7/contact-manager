@@ -1,0 +1,72 @@
+<app-nav2></app-nav2>
+<div class="container-fluid">
+    <div class="contact_list">
+        <div><h2>CONTACTS:</h2></div>
+        <div class="contacts" *ngFor="let contact of Contacts;let idx=index" #idx>
+            <button class="btn btn-danger my-1" (click)="onClick(idx)"><div class="contact"><span class="material-icons">account_circle</span><p>NAME:{{ contact.fname }}<br>PHONE:{{ contact.phone }}</p></div></button>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="display_region">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-7 col-xl-6 col-xxl-7">
+                <div class="card">
+                    <div class="contacts" *ngFor="let element of Contacts;let idx =index">
+                        <div *ngIf="element._id == id">
+                            <div class="card-header bg-warning text-white text-center">
+                                <h1>CONTACT:</h1>
+                            </div>
+                            <div [class]="isError? 'alert alert-danger':'d-none'" class="my-4">{{ message }}</div>
+                            <div [class]="isSuccess? 'alert alert-success':'d-none'" class="my-4">{{ message }}</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <strong></strong>
+                                    </div>
+                                </div>
+                                <div class="row my-4">
+                                    <div class="col">
+                                        <h2><strong>NAME : </strong>{{ element.fname }}</h2>
+                                    </div>
+                                </div>
+                                
+                                <div class="row my-4">
+                                    <div class="col">
+                                        <h2><strong>EMAIL : </strong>{{ element.email }}</h2>
+                                    </div>
+                                </div>
+                                    
+                                <div class="row my-4">
+                                    <div class="col">
+                                        <h2><strong>PHONE : </strong>{{ element.phone }}</h2>
+                                    </div>
+                                </div>
+                                    
+                                <div class="row my-4">
+                                    <div class="col">
+                                        <h2><strong>TYPE : </strong>{{ element.type }}</h2>
+                                    </div>
+                                </div>
+                                    
+                                <div class="row my-4">
+                                    <div class="col text-center">
+                                        <a class="nav-link" href="contact/update/{{element._id}}"><button class="btn btn-success">update</button></a>
+                                    </div>
+                                </div>
+
+                                <div class="row my-4">
+                                    <div class="col text-center">
+                                        <button class="btn btn-danger" (click)="onDelete()">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

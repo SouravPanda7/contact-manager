@@ -1,0 +1,55 @@
+<app-nav2></app-nav2>
+<div class="container pt-5 ">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-7 col-xl-6 col-xxl-5">
+            <form #addForm="ngForm" ngSubmit="onSubmit()">
+                <div class="card">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h1>UPDATE HERE</h1>
+                    </div>
+                    <div class="card-body">
+                        <div [class]="isError? 'alert alert-danger':'d-none'" class="my-4">{{ message }}</div>
+                        <div [class]="isSuccess? 'alert alert-success':'d-none'" class="my-4">{{ message }}</div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" minlength="4" [class.is-invalid]="fname.invalid && fname.touched" [class.is-valid]="fname.valid && fname.touched" required #fname="ngModel" name="fname" placeholder="full name" pattern="[a-zA-Z ]+$" [(ngModel)]=contact.fname>
+                            </div>
+                        </div>
+                        <div *ngIf="fname.touched">
+                            <div class="alert alert-danger" *ngIf=" fname.invalid ">Enter a valid name</div>
+                        </div>
+                        <div class="row my-4">
+                            <div class="col">
+                                <input type="phone" class="form-control" minlength="10" [class.is-invalid]="phone.invalid && phone.touched" [class.is-valid]="phone.valid && phone.touched" required #phone="ngModel" name="phone" placeholder="phone number" pattern="[0-9]+$" [(ngModel)]=contact.phone>
+                            </div>
+                        </div>
+                        <div *ngIf="phone.touched">
+                            <div class="alert alert-danger" *ngIf=" phone.invalid ">Enter a valid phone number</div>
+                        </div>
+                        <div class="row my-4">
+                            <div class="col">
+                                <input type="email" class="form-control" [class.is-invalid]="email.invalid && email.touched" [class.is-valid]="email.valid && email.touched" required #email="ngModel"  name="email" placeholder="email id" pattern="[A-Za-z0-9._-]+@[a-z-.]+\.[a-z]{3}$" [(ngModel)]=contact.email>
+                            </div>
+                        </div>
+                        <div *ngIf="email.touched">
+                            <div class="alert alert-danger" *ngIf=" email.errors || email.invalid ">Enter a valid mail id</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" minlength="4" [class.is-invalid]="type.invalid && type.touched" [class.is-valid]="type.valid && type.touched" required #type="ngModel" name="type" placeholder="Type of Contact" pattern="[a-zA-Z ]+$" [(ngModel)]=contact.type>
+                            </div>
+                        </div>
+                        <div *ngIf="type.touched">
+                            <div class="alert alert-danger" *ngIf=" type.invalid ">Enter a valid name</div>
+                        </div>
+                        <div class="row my-4">
+                            <div class="col text-center">
+                                <button class="btn btn-primary" [disabled]="addForm.form.invalid" (click)="onSubmit()">Update Contact</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
